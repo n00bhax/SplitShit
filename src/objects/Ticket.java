@@ -1,5 +1,7 @@
 package objects;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -36,5 +38,12 @@ public class Ticket {
 
     public void printDistribution() {
         System.out.println(distribution.toString());
+    }
+
+    public void print(){
+        System.out.println("Ticket :" + name);
+        System.out.println("\tTotal Cost: " + totalPrice);
+        distribution.forEach((k,v) -> System.out.println("\t" + k.getName() + ": " + v));
+
     }
 }
