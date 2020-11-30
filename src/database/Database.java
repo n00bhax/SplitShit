@@ -1,9 +1,14 @@
 package database;
 
 import java.util.ArrayList;
-
-public interface Database
+// deze klasse is useless
+public class Database
 {
-    < E > void add(E e);
-    < E > ArrayList < E > get();
+    private Tickets tickets;
+    private Persons persons;
+
+    public Database(Tickets tickets, Persons persons) {
+        this.tickets = tickets;
+        this.persons = persons;
+    }
 }

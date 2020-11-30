@@ -4,17 +4,15 @@ import objects.Ticket;
 
 import java.util.ArrayList;
 
-public class Tickets implements Database {
+public class Tickets {
 
     ArrayList<Ticket> data = new ArrayList<>();
 
-    @Override
-    public <E> void add(E e) {
-        data.add((Ticket) e);
+    public void add(Ticket t) {
+        data.add(t);
     }
 
-    @Override
-    public <E> ArrayList<E> get() {
-        return  (ArrayList<E>) data;
+    public ArrayList<Ticket> get() {
+        return data;
     }
 }
