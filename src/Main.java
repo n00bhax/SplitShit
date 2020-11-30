@@ -7,5 +7,6 @@ public class Main {
         Ticket t = new Ticket("testTicket", 5);
         t.addPerson(p, 5);
         t.printDistribution();
+        System.out.println(t.getName());
     }
 }
