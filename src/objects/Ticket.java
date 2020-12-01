@@ -5,14 +5,15 @@ import org.w3c.dom.ls.LSOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Ticket {
+public class Ticket extends Object{
 
-    private String name;
+   // private String name;
     private double totalPrice;
     private HashMap<Person, Double> distribution = new HashMap<>();
 
     public Ticket(String name, double totalPrice) {
-        this.name = name;
+        super(name);
+        //this.name = name;
         this.totalPrice = totalPrice;
     }
 

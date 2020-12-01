@@ -27,7 +27,7 @@ public class Controller {
     }
 
     public void addPersonToTicket(String ticketName, String personName, double amountPayed){
-        Ticket t = tickets.getTicket(ticketName);
+        Ticket t = (Ticket) tickets.getObject(ticketName);
         Person p = persons.getPerson(personName);
         t.addPerson(p, amountPayed );
     }

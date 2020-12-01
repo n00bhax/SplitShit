@@ -8,17 +8,18 @@ import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class Tickets implements Iterable<Ticket>{
+public class Tickets extends Database{
+
 
     private static Tickets single_instance = null;
-    ArrayList<Ticket> data = new ArrayList<>();
+    //ArrayList<Ticket> data = new ArrayList<>();
 
     public static Tickets getInstance(){
         if (single_instance == null)
             single_instance = new Tickets();
         return single_instance;
     }
-
+/*
     public void add(Ticket t) {
         data.add(t);
     }
@@ -28,16 +29,13 @@ public class Tickets implements Iterable<Ticket>{
     }
 
     public Ticket getTicket(String name){
-        for (Ticket t: data){
+        for (Ticket t: this.data){
             if (t.getName().equals(name))
                 return t;
         }
         return null;
     }
+*/
 
-    @Override
-    public Iterator<Ticket> iterator() {
-        return this.data.iterator();
-    }
 
 }

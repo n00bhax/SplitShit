@@ -1,10 +1,10 @@
 package objects;
 
-public class Person {
+public class Person extends Object{
     private String name;
 
     public Person(String name) {
-        this.name = name;
+        super(name);
     }
 
     public String getName(){ return name; }
