@@ -6,11 +6,11 @@ import objects.Ticket;
 import java.util.ArrayList;
 
 
-public class Persons {
+public class Persons extends Database<Person> {
 
     private static Persons single_instance = null;
     //HashMap<String, Ticket[]> data;
-    ArrayList<Person> data = new ArrayList<>();
+    //ArrayList<Person> data = new ArrayList<>();
 
     public static Persons getInstance(){
         if (single_instance == null)
@@ -18,6 +18,7 @@ public class Persons {
         return single_instance;
     }
 
+    /*
     public void add(Person p) {
         data.add(p);
     }
@@ -33,5 +34,5 @@ public class Persons {
         }
         return null;
     }
-
+*/
 }

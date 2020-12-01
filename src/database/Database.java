@@ -1,32 +1,28 @@
 package database;
 
-import objects.Object;
 import objects.Person;
 import objects.Ticket;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 
-public class Database implements Iterable<Object>{
+public class Database<E> implements Iterable<E>{
 
     //HashMap<String, Ticket[]> data;
-    protected ArrayList<Object> data = new ArrayList<>();
+    protected LinkedHashMap<String, E> data = new LinkedHashMap<>();
 
-    public void add(Object e) {
-        data.add(e);
+    public void add(String name, E e) {
+        data.put(name, e);
     }
 
     @Override
-    public Iterator<Object> iterator() {
-        return this.data.iterator();
+    public Iterator<E> iterator() {
+        return this.data.values().iterator();
     }
 
-    public Object getObject(String name){
-        for (Object e: data){
-            if (e.getName().equals(name))
-                return e;
-        }
-        return null;
+    public E getObject(String name){
+        return data.get(name);
     }
-
 }

@@ -4,16 +4,16 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
-public class Ticket extends Object{
+public class Ticket {
 
-   // private String name;
+    private String name;
     private double totalPrice;
-    private HashMap<Person, Double> distribution = new HashMap<>();
+    private LinkedHashMap<Person, Double> distribution = new LinkedHashMap<>();
 
     public Ticket(String name, double totalPrice) {
-        super(name);
-        //this.name = name;
+        this.name = name;
         this.totalPrice = totalPrice;
     }
 

@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class Tickets extends Database{
+public class Tickets extends Database<Ticket>{
 
 
     private static Tickets single_instance = null;

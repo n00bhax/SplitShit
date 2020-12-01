@@ -18,17 +18,17 @@ public class Controller {
 
     public void addTicket(String name, double totalPrice){
         Ticket t = new Ticket(name, totalPrice);
-        tickets.add(t);
+        tickets.add(name, t);
     }
 
     public void addPerson(String name){
         Person p = new Person(name);
-        persons.add(p);
+        persons.add(name, p);
     }
 
     public void addPersonToTicket(String ticketName, String personName, double amountPayed){
-        Ticket t = (Ticket) tickets.getObject(ticketName);
-        Person p = persons.getPerson(personName);
+        Ticket t = tickets.getObject(ticketName);
+        Person p = persons.getObject(personName);
         t.addPerson(p, amountPayed );
     }
 
