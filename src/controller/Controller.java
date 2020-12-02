@@ -5,15 +5,15 @@ import database.Tickets;
 import objects.Person;
 import objects.Ticket;
 
+import java.beans.PropertyChangeListener;
+
 public class Controller {
 
-    private Tickets tickets;
-    private Persons persons;
+    private Tickets tickets = Tickets.getInstance();
+    private Persons persons = Persons.getInstance();
 
+    public Controller() {
 
-    public Controller(Tickets tickets, Persons persons) {
-        this.tickets = tickets;
-        this.persons = persons;
     }
 
     public void addTicket(String name, double totalPrice){
@@ -27,15 +27,19 @@ public class Controller {
     }
 
     public void addPersonToTicket(String ticketName, String personName, double amountPayed){
-        Ticket t = tickets.getObject(ticketName);
-        Person p = persons.getObject(personName);
+        Ticket t = tickets.get(ticketName);
+        Person p = persons.get(personName);
         t.addPerson(p, amountPayed );
     }
 
     public void printAllTickets(){
         for (Ticket t: tickets){
-            t.print();
+            System.out.println(t);
         }
     }
 
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        tickets.addPropertyChangeListener(pcl);
+        persons.addPropertyChangeListener(pcl);
+    }
 }

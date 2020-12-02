@@ -1,10 +1,13 @@
 package objects;
 
+import database.Database;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Ticket {
 
@@ -34,6 +37,7 @@ public class Ticket {
     }
 
     public void addPerson(Person p, double payed) {
+        //HEEFT PROPERTYCHANGE DING NODIG
         distribution.put(p, payed);
     }
 
@@ -41,10 +45,15 @@ public class Ticket {
         System.out.println(distribution.toString());
     }
 
-    public void print(){
-        System.out.println("Ticket :" + name);
-        System.out.println("\tTotal Cost: " + totalPrice);
-        distribution.forEach((k,v) -> System.out.println("\t" + k.getName() + ": " + v));
 
+    @Override
+    public String toString() {
+        return "Ticket: " + name +
+                "\n\tTotal Price: " + totalPrice +
+                //"\n\t" + distribution.keySet().stream().map( key -> "Key:" + key ).collect(Collectors.joining("\t"));
+                "\n\t" + distribution.keySet().stream().map(key -> key.getName() + distribution.get(key) ).collect(Collectors.joining("\t"));//distribution.keySet().forEach((k, v) -> "\t" + k.getName() + ": " + v );
+
+        //.map(key -> key + " "+ distribution.get(key));//
     }
+
 }
