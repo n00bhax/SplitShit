@@ -1,6 +1,5 @@
 import controller.Controller;
-import database.Persons;
-import database.Tickets;
+import database.Database;
 import objects.Person;
 import objects.Ticket;
 import view.View;
@@ -21,5 +20,7 @@ public class Main {
         c.addPersonToTicket("tikkie", "bart", 1);
 
         c.printAllTickets();
+
     }
 }
+

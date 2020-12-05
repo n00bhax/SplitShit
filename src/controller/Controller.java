@@ -1,7 +1,6 @@
 package controller;
 
-import database.Persons;
-import database.Tickets;
+import database.Database;
 import objects.Person;
 import objects.Ticket;
 
@@ -9,8 +8,8 @@ import java.beans.PropertyChangeListener;
 
 public class Controller {
 
-    private Tickets tickets = Tickets.getInstance();
-    private Persons persons = Persons.getInstance();
+    private Database<Ticket> tickets = Database.getTicketDatabase();
+    private Database<Person> persons = Database.getPersonDatabase();
 
     public Controller() {
 

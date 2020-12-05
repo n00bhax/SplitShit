@@ -51,7 +51,7 @@ public class Ticket {
         return "Ticket: " + name +
                 "\n\tTotal Price: " + totalPrice +
                 //"\n\t" + distribution.keySet().stream().map( key -> "Key:" + key ).collect(Collectors.joining("\t"));
-                "\n\t" + distribution.keySet().stream().map(key -> key.getName() + distribution.get(key) ).collect(Collectors.joining("\t"));//distribution.keySet().forEach((k, v) -> "\t" + k.getName() + ": " + v );
+                "\n\t" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key) ).collect(Collectors.joining("\t"));//distribution.keySet().forEach((k, v) -> "\t" + k.getName() + ": " + v );
 
         //.map(key -> key + " "+ distribution.get(key));//
     }
