@@ -3,6 +3,8 @@ package objects;
 import database.Database;
 import org.w3c.dom.ls.LSOutput;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -15,9 +17,16 @@ public class Ticket {
     private double totalPrice;
     private LinkedHashMap<Person, Double> distribution = new LinkedHashMap<>();
 
+    // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
+    public PropertyChangeSupport support = new PropertyChangeSupport(this);
+
     public Ticket(String name, double totalPrice) {
         this.name = name;
         this.totalPrice = totalPrice;
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener pcl) {
+        support.addPropertyChangeListener(pcl);
     }
 
     public String getName() {
@@ -37,8 +46,8 @@ public class Ticket {
     }
 
     public void addPerson(Person p, double payed) {
-        //HEEFT PROPERTYCHANGE DING NODIG
         distribution.put(p, payed);
+        support.firePropertyChange("addPerson", null, p);
     }
 
     public void printDistribution() {
@@ -48,7 +57,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket: " + name +
+        return "\nTicket: " + name +
                 "\n\tTotal Price: " + totalPrice +
                 //"\n\t" + distribution.keySet().stream().map( key -> "Key:" + key ).collect(Collectors.joining("\t"));
                 "\n\t" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key) ).collect(Collectors.joining("\t"));//distribution.keySet().forEach((k, v) -> "\t" + k.getName() + ": " + v );

@@ -8,9 +8,11 @@ public class Main {
     public static void main(String[] args) {
 
         Controller c = new Controller();
-
-        View v = new View();
+        View v = new View(c);
         c.addPropertyChangeListener(v);
+
+
+        //c.addPropertyChangeListener(v);
 
         c.addPerson("willem");
         c.addPerson("bart");
@@ -19,7 +21,7 @@ public class Main {
         c.addPersonToTicket("tikkie", "willem", 3);
         c.addPersonToTicket("tikkie", "bart", 1);
 
-        c.printAllTickets();
+        //c.printAllTickets();
 
     }
 }

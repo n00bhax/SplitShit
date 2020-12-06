@@ -39,13 +39,18 @@ public class Database<E> implements Iterable<E>{
 
     public void add(String name, E e) {
         data.put(name, e);
-        support.firePropertyChange("add", this.data, e);
+        support.firePropertyChange("add", this.data, this.data.toString());
 
-        //this.pcs.firePropertyChange("value", oldValue, newValue);
     }
 
     public void getListUI(){
+    }
 
+    @Override
+    public String toString() {
+        return "Database{" +
+                "data=" + data +
+                '}';
     }
 
     @Override
