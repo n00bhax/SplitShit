@@ -1,7 +1,7 @@
 package database;
 
 import objects.Person;
-import objects.Ticket;
+import objects.tickets.Ticket;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

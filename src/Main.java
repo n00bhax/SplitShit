@@ -1,7 +1,4 @@
 import controller.Controller;
-import database.Database;
-import objects.Person;
-import objects.Ticket;
 import view.View;
 
 public class Main {
@@ -17,7 +14,7 @@ public class Main {
         c.addPerson("willem");
         c.addPerson("bart");
 
-        c.addTicket("tikkie", 5);
+        c.addTicket("tikkie", 5, false);
         c.addPersonToTicket("tikkie", "willem", 3);
         c.addPersonToTicket("tikkie", "bart", 1);
 

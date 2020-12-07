@@ -2,7 +2,6 @@ package view;
 
 import controller.Controller;
 import database.Database;
-import objects.Ticket;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

@@ -1,6 +1,7 @@
-package objects;
+package objects.tickets;
 
 import database.Database;
+import objects.Person;
 import org.w3c.dom.ls.LSOutput;
 
 import java.beans.PropertyChangeListener;
@@ -11,7 +12,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Ticket {
+public abstract class Ticket {
 
     private String name;
     private double totalPrice;
