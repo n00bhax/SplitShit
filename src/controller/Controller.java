@@ -19,9 +19,9 @@ public class Controller {
 
     }
 
-    public void addTicket(String name, double totalPrice, boolean isEvenlySplit){
+    public void addTicket(String name, double totalPrice, Person lender, boolean isEvenlySplit){
         TicketFactory f = FactoryProducer.getFactory(isEvenlySplit);
-        Ticket t = f.createTicket(name, totalPrice);
+        Ticket t = f.createTicket(name, totalPrice, lender);
         t.addPropertyChangeListener(pcl);
         tickets.add(name, t);
     }
@@ -30,6 +30,10 @@ public class Controller {
         Person p = new Person(name);
         //p.addPropertyChangeListener(pcl);
         persons.add(name, p);
+    }
+
+    public Person getPerson(String name){
+        return persons.get(name);
     }
 
     public void addPersonToTicket(String ticketName, String personName, double amountPayed){

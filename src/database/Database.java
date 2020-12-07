@@ -12,6 +12,8 @@ public class Database<E> implements Iterable<E>{
 
     // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
     public PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    //Naam is key, Object is value
     protected LinkedHashMap<String, E> data = new LinkedHashMap<>();
 
     private static Database<Ticket> ticketDatabase = null;
@@ -37,9 +39,17 @@ public class Database<E> implements Iterable<E>{
         support.addPropertyChangeListener(pcl);
     }
 
+   // public E get(String name) {
+   //     return null;
+   // }
+
     public void add(String name, E e) {
-        data.put(name, e);
-        support.firePropertyChange("add", this.data, this.data.toString());
+        if (data.get(name) == null){
+            data.put(name, e);
+            support.firePropertyChange("add", this.data, this.data.toString());
+        } else {
+            System.out.println("THIS NAME IS ALREADY IN USE");
+        }
 
     }
 

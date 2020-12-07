@@ -17,13 +17,17 @@ public abstract class Ticket {
     private String name;
     private double totalPrice;
     private LinkedHashMap<Person, Double> distribution = new LinkedHashMap<>();
+    //Persons Doubles contain how much they are in debt (need to pay back). (=0 when split equally)
+    private Person lender;
 
     // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
     public PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    public Ticket(String name, double totalPrice) {
-        this.name = name;
+    public Ticket(String ticketName, double totalPrice, Person lender) {
+        this.name = ticketName;
         this.totalPrice = totalPrice;
+        this.lender = lender;
+        addPerson(lender, 0);
     }
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
@@ -42,28 +46,24 @@ public abstract class Ticket {
         return totalPrice;
     }
 
+    public void setLender(Person lender) {
+        this.lender = lender;
+    }
+
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
-    public void addPerson(Person p, double payed) {
-        distribution.put(p, payed);
+    public void addPerson(Person p, double debtAmount) {
+        distribution.put(p, debtAmount);
         support.firePropertyChange("addPerson", null, p);
     }
-
-    public void printDistribution() {
-        System.out.println(distribution.toString());
-    }
-
 
     @Override
     public String toString() {
         return "\nTicket: " + name +
                 "\n\tTotal Price: " + totalPrice +
-                //"\n\t" + distribution.keySet().stream().map( key -> "Key:" + key ).collect(Collectors.joining("\t"));
-                "\n\t" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key) ).collect(Collectors.joining("\t"));//distribution.keySet().forEach((k, v) -> "\t" + k.getName() + ": " + v );
-
-        //.map(key -> key + " "+ distribution.get(key));//
+                "\n\t" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key) ).collect(Collectors.joining("\t"));
     }
 
 }
