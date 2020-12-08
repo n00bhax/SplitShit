@@ -5,6 +5,7 @@ import factory.FactoryProducer;
 import factory.TicketFactory;
 import objects.Person;
 import objects.tickets.Ticket;
+import objects.tickets.TicketTypes;
 
 import java.beans.PropertyChangeListener;
 
@@ -19,9 +20,9 @@ public class Controller {
 
     }
 
-    public void addTicket(String name, double totalPrice, Person lender, boolean isEvenlySplit){
-        TicketFactory f = FactoryProducer.getFactory(isEvenlySplit);
-        Ticket t = f.createTicket(name, totalPrice, lender);
+    public void addTicket(String name, double totalPrice, Person lender, boolean isEquallySplit){
+        TicketFactory f = FactoryProducer.getFactory(isEquallySplit);
+        Ticket t = f.createTicket(name, totalPrice, lender, TicketTypes.AIRPLANE);
         t.addPropertyChangeListener(pcl);
         tickets.add(name, t);
     }

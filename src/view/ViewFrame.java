@@ -2,7 +2,9 @@ package view;
 
 import controller.Controller;
 import database.Database;
-import view.panels.TicketsPanel;
+import objects.Person;
+import objects.tickets.Ticket;
+import view.panels.DatabasePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +14,8 @@ import java.beans.PropertyChangeListener;
 public class ViewFrame extends JFrame implements PropertyChangeListener {
 
     private Controller controller;
-    TicketsPanel panel;
+    DatabasePanel<Ticket> ticketsPanel;
+    DatabasePanel<Person> personsPanel;
 
     public ViewFrame() {
         super("SplitShit");
@@ -28,23 +31,24 @@ public class ViewFrame extends JFrame implements PropertyChangeListener {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
 
-        panel = new TicketsPanel();
-        this.add(panel);
+        ticketsPanel = new DatabasePanel(Database.getTicketDatabase(), "Tickets");
+        personsPanel = new DatabasePanel(Database.getPersonDatabase(), "Persons");
+        this.add(ticketsPanel);
+        this.add(personsPanel);
 
         this.setVisible(true);
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("SOMETHING HAS CHANGED");
-
 
         System.out.println("Persons: " + Database.getPersonDatabase());
         System.out.println("Tickets: " + Database.getTicketDatabase());
 
-        panel.refresh();
+        ticketsPanel.refresh();
+        personsPanel.refresh();
 
-        //System.out.println(evt.getNewValue());
+        //jframe grid layout
 
     }
 }
