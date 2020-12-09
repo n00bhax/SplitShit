@@ -20,19 +20,20 @@ public abstract class Ticket {
     //Persons Doubles contain how much they are in debt (need to pay back). (=0 when split equally)
     private Person lender;
 
-    // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
-    public PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    //public PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public Ticket(String ticketName, double totalPrice, Person lender) {
         this.name = ticketName;
         this.totalPrice = totalPrice;
         this.lender = lender;
-        addPerson(lender, 0);
+        //addPerson(lender, 0);
+        //support.firePropertyChange("newTicket", null, null);
     }
 
-    public void addPropertyChangeListener(PropertyChangeListener pcl) {
-        support.addPropertyChangeListener(pcl);
-    }
+    //public void addPropertyChangeListener(PropertyChangeListener pcl) {
+    //    support.addPropertyChangeListener(pcl);
+    //}
 
     public String getName() {
         return name;
@@ -48,6 +49,7 @@ public abstract class Ticket {
 
     public void setLender(Person lender) {
         this.lender = lender;
+     //   support.firePropertyChange("newLender", null, null);
     }
 
     public void setTotalPrice(double totalPrice) {
@@ -56,12 +58,12 @@ public abstract class Ticket {
 
     public void addPerson(Person p, double debtAmount) {
         distribution.put(p, debtAmount);
-        support.firePropertyChange("addPerson", null, p);
+      //  support.firePropertyChange("addPerson", null, null);
     }
 
     @Override
     public String toString() {
-        return name + " Lender: " + lender.getName() + " (" + totalPrice + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key) ).collect(Collectors.joining("\t") ) + ")";
+        return name + ": " + lender.getName() + " payed " + totalPrice + " (" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key)).collect(Collectors.joining(",\t")) + ")";
     }
 
 }

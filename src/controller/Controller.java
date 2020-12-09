@@ -14,17 +14,24 @@ public class Controller {
     private Database<Ticket> tickets = Database.getTicketDatabase();
     private Database<Person> persons = Database.getPersonDatabase();
 
-    private PropertyChangeListener pcl;
+    // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
+    //private PropertyChangeListener pcl;
 
     public Controller() {
 
     }
 
-    public void addTicket(String name, double totalPrice, Person lender, boolean isEquallySplit){
+    public void addPropertyChangeListener(PropertyChangeListener pcl){
+        //this.pcl = pcl;
+        tickets.addPropertyChangeListener(pcl);
+        persons.addPropertyChangeListener(pcl);
+    }
+
+    public void addTicket(String ticketName, double totalPrice, Person lender, boolean isEquallySplit){
         TicketFactory f = FactoryProducer.getFactory(isEquallySplit);
-        Ticket t = f.createTicket(name, totalPrice, lender, TicketTypes.AIRPLANE);
-        t.addPropertyChangeListener(pcl);
-        tickets.add(name, t);
+        Ticket t = f.createTicket(ticketName, totalPrice, lender, TicketTypes.OTHER);
+        //t.addPropertyChangeListener(pcl);
+        tickets.add(ticketName, t);
     }
 
     public void addPerson(String name){
@@ -40,17 +47,10 @@ public class Controller {
     public void addPersonToTicket(String ticketName, String personName, double amountPayed){
         Ticket t = tickets.get(ticketName);
         Person p = persons.get(personName);
+        if (t == null || p == null)
+            return;
         t.addPerson(p, amountPayed );
     }
-    public void addPropertyChangeListener(PropertyChangeListener pcl){
-        this.pcl = pcl;
-        tickets.addPropertyChangeListener(pcl);
-        persons.addPropertyChangeListener(pcl);
-    }
-    public void printAllTickets(){
-        for (Ticket t: tickets){
-            System.out.println(t);
-        }
-    }
+
 
 }

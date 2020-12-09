@@ -39,36 +39,30 @@ public class Database<E> implements Iterable<E>{
         support.addPropertyChangeListener(pcl);
     }
 
-   // public E get(String name) {
-   //     return null;
-   // }
-
-    public void add(String name, E e) {
+    public void add(String ticketName, E e) {
+        /*
         if (data.get(name) == null){
             data.put(name, e);
-            support.firePropertyChange("add", this.data, this.data.toString());
+            support.firePropertyChange("add", null, null);
         } else {
             System.out.println("THIS NAME IS ALREADY IN USE");
         }
+        */
+
+        if (data.put(ticketName, e) == null)
+            support.firePropertyChange("add", null, null);
 
     }
 
-    public void getListUI(){
+    public E get(String name){
+        return data.get(name);
     }
 
-    @Override
-    public String toString() {
-        return "Database{" +
-                "data=" + data +
-                '}';
-    }
 
     @Override
     public Iterator<E> iterator() {
         return this.data.values().iterator();
     }
 
-    public E get(String name){
-        return data.get(name);
-    }
+
 }

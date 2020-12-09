@@ -12,12 +12,12 @@ public class DatabasePanel<E> extends JPanel{
     private JList<E> dbJList;
     private DefaultListModel<E> dbListModel;
 
-    private Database<E> db;
+    private final Database<E> db;
 
-    public DatabasePanel(Database<E> db, String titel)
+    public DatabasePanel(Database<E> db, String title)
     {
         this.db = db;
-        JLabel label = new JLabel(titel);
+        JLabel label = new JLabel(title);
         dbListModel = new DefaultListModel<>();
         dbJList = new JList<>(dbListModel);
 
@@ -29,7 +29,11 @@ public class DatabasePanel<E> extends JPanel{
 
     public void refresh(){
 
+        dbListModel.clear();
+
         for(E e: this.db)
             this.dbListModel.addElement(e);
+
+        //this.updateUI();
     }
 }

@@ -42,9 +42,6 @@ public class ViewFrame extends JFrame implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
-        System.out.println("Persons: " + Database.getPersonDatabase());
-        System.out.println("Tickets: " + Database.getTicketDatabase());
-
         ticketsPanel.refresh();
         personsPanel.refresh();
 
