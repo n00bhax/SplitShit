@@ -47,8 +47,13 @@ public class Controller {
     public void addPersonToTicket(String ticketName, String personName, double amountPayed){
         Ticket t = tickets.get(ticketName);
         Person p = persons.get(personName);
-        if (t == null || p == null)
+        if (t == null || p == null) {
+            if (t == null)
+                System.out.println(ticketName +" bestaat niet");
+            if (p == null)
+                System.out.println(personName+" bestaat niet");
             return;
+        }
         t.addPerson(p, amountPayed );
     }
 

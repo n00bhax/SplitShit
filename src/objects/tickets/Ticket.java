@@ -63,7 +63,7 @@ public abstract class Ticket {
 
     @Override
     public String toString() {
-        return name + ": " + lender.getName() + " payed " + totalPrice + " (" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key)).collect(Collectors.joining(",\t")) + ")";
+        return name + ": " + lender.getName() + " payed " + totalPrice + " (" + distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key)).collect(Collectors.joining(", ")) + ")";
     }
 
 }

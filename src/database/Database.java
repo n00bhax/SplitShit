@@ -39,7 +39,7 @@ public class Database<E> implements Iterable<E>{
         support.addPropertyChangeListener(pcl);
     }
 
-    public void add(String ticketName, E e) {
+    public void add(String name, E e) {
         /*
         if (data.get(name) == null){
             data.put(name, e);
@@ -49,8 +49,10 @@ public class Database<E> implements Iterable<E>{
         }
         */
 
-        if (data.put(ticketName, e) == null)
+        if (data.put(name, e) == null)
             support.firePropertyChange("add", null, null);
+        else
+            System.out.println(name + " bestaat al");
 
     }
 
