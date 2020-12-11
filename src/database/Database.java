@@ -40,20 +40,16 @@ public class Database<E> implements Iterable<E>{
     }
 
     public void add(String name, E e) {
-        /*
-        if (data.get(name) == null){
-            data.put(name, e);
-            support.firePropertyChange("add", null, null);
-        } else {
-            System.out.println("THIS NAME IS ALREADY IN USE");
-        }
-        */
-
         if (data.put(name, e) == null)
             support.firePropertyChange("add", null, null);
         else
             System.out.println(name + " bestaat al");
 
+    }
+
+    public void remove(String key){
+        data.remove(key);
+        support.firePropertyChange("remove", null, null);
     }
 
     public E get(String name){

@@ -11,10 +11,10 @@ import java.beans.PropertyChangeListener;
 
 public class Controller {
 
-    private Database<Ticket> tickets = Database.getTicketDatabase();
-    private Database<Person> persons = Database.getPersonDatabase();
+    private final Database<Ticket> tickets = Database.getTicketDatabase();
+    private final Database<Person> persons = Database.getPersonDatabase();
 
-    // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
+    // Ik gebruik geen Observers wegens deprecated in java 15. Jens zei dat het goed was.
     //private PropertyChangeListener pcl;
 
     public Controller() {

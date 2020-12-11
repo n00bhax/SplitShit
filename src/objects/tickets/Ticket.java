@@ -1,22 +1,15 @@
 package objects.tickets;
 
-import database.Database;
 import objects.Person;
-import org.w3c.dom.ls.LSOutput;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public abstract class Ticket {
 
     private String name;
     private double totalPrice;
-    private LinkedHashMap<Person, Double> distribution = new LinkedHashMap<>();
+    private final LinkedHashMap<Person, Double> distribution = new LinkedHashMap<>();
     //Persons Doubles contain how much they are in debt (need to pay back). (=0 when split equally)
     private Person lender;
 
