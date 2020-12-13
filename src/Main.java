@@ -1,14 +1,12 @@
 import controller.Controller;
-import database.Database;
-import objects.Person;
-import view.ViewFrame;
+import view.windows.MainWindow;
 
 public class Main {
     public static void main(String[] args) {
 
 
         Controller c = new Controller();
-        ViewFrame v = new ViewFrame();
+        MainWindow v = new MainWindow();
         v.initialize(c);
 
         c.addPropertyChangeListener(v);
