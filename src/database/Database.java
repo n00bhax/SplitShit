@@ -7,6 +7,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class Database<E> implements Iterable<E>{
 
@@ -45,6 +46,10 @@ public class Database<E> implements Iterable<E>{
         else
             System.out.println(name + " bestaat al");
 
+    }
+
+    public String[] getKeys(){
+        return data.keySet().toArray(new String[0]);
     }
 
     public void remove(String key){

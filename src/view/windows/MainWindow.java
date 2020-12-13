@@ -14,7 +14,7 @@ import java.beans.PropertyChangeListener;
 
 public class MainWindow extends JFrame implements PropertyChangeListener {
 
-    private Controller controller;
+    private final Controller controller = new Controller();
     DatabasePanel<Ticket> ticketsPanel;
     DatabasePanel<Person> personsPanel;
 
@@ -22,19 +22,17 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
         super("SplitShit");
     }
 
-    public void initialize(Controller controller)
+    public void initialize()
     {
-        this.controller = controller;
 
-        //this.getContentPane().setLayout(new FlowLayout());
         this.setSize(500, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
 
-        ticketsPanel = new DatabasePanel(Database.getTicketDatabase(), "Tickets", DatabaseType.TICKET);
-        personsPanel = new DatabasePanel(Database.getPersonDatabase(), "Persons", DatabaseType.PERSON);
+        ticketsPanel = new DatabasePanel(Database.getTicketDatabase(), "Tickets", DatabaseType.TICKET, controller);
+        personsPanel = new DatabasePanel(Database.getPersonDatabase(), "Persons", DatabaseType.PERSON, controller);
         this.add(ticketsPanel);
         this.add(personsPanel);
 
@@ -46,8 +44,6 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
 
         ticketsPanel.refresh();
         personsPanel.refresh();
-
-        //jframe grid layout
 
     }
 }

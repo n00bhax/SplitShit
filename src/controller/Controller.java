@@ -27,8 +27,9 @@ public class Controller {
         persons.addPropertyChangeListener(pcl);
     }
 
-    public void addTicket(String ticketName, double totalPrice, Person lender, boolean isEquallySplit){
+    public void addTicket(String ticketName, double totalPrice, String lenderName, boolean isEquallySplit){
         TicketFactory f = FactoryProducer.getFactory(isEquallySplit);
+        Person lender = persons.get(lenderName);
         Ticket t = f.createTicket(ticketName, totalPrice, lender, TicketTypes.OTHER);
         //t.addPropertyChangeListener(pcl);
         tickets.add(ticketName, t);

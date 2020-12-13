@@ -1,9 +1,10 @@
 package view.panels;
 
+import controller.Controller;
 import database.Database;
-import objects.tickets.Ticket;
 import view.DatabaseType;
-import view.windows.AddPersonWindow;
+import view.windows.addWindow.AddPersonWindow;
+import view.windows.addWindow.AddTicketWindow;
 
 import javax.swing.*;
 
@@ -19,10 +20,13 @@ public class DatabasePanel<E> extends JPanel{
     private final Database<E> db;
     private DatabaseType dbType;
 
-    public DatabasePanel(Database<E> db, String title, DatabaseType dbType)
+    private Controller controller;
+
+    public DatabasePanel(Database<E> db, String title, DatabaseType dbType, Controller controller)
     {
         this.db = db;
         this.dbType = dbType;
+        this.controller = controller;
 
         JLabel label = new JLabel(title);
         dbListModel = new DefaultListModel<>();
@@ -46,10 +50,11 @@ public class DatabasePanel<E> extends JPanel{
         this.addButton.addActionListener(l ->
             {
                 if (dbType == DatabaseType.PERSON){
-                    AddPersonWindow w = new AddPersonWindow();
+                    AddPersonWindow w = new AddPersonWindow(controller);
                     w.initialize();
                 } else if (dbType == DatabaseType.TICKET){
-
+                    AddTicketWindow w = new AddTicketWindow(controller);
+                    w.initialize();
                 }
 
             });
