@@ -2,7 +2,6 @@ package view.windows.addWindow;
 
 import controller.Controller;
 import database.Database;
-import objects.Person;
 
 import javax.swing.*;
 import java.awt.event.WindowEvent;
@@ -11,14 +10,16 @@ public class AddTicketWindow extends AddWindow {
 
     private JTextField ticketName;
     private JTextField totalPrice;
+    private JTextField individualPrice;
+    private JLabel individualPriceHere;
     private JComboBox<String> lenderCB;
 
     private JToggleButton isUnequallySplit;
 
     private JComboBox<String> lendingCB;
     private JButton add;
-    private JList<String> dbJList;
-    private DefaultListModel<String> dbListModel;
+    private JList<String> personJList;
+    private DefaultListModel<String> personListModel;
 
 
     public AddTicketWindow(Controller controller) {
@@ -29,13 +30,15 @@ public class AddTicketWindow extends AddWindow {
     {
         ticketName = new JTextField(10);
         totalPrice = new JTextField(10);
+        individualPrice = new JTextField(10);
+        individualPriceHere = new JLabel("Individual price for selected person:");
         lenderCB = new JComboBox<>(Database.getPersonDatabase().getKeys());
         lendingCB = new JComboBox<>(Database.getPersonDatabase().getKeys());
         isUnequallySplit = new JToggleButton("Split unequally", false);
         add = new JButton("+");
 
-        dbListModel = new DefaultListModel<>();
-        dbJList = new JList<>(dbListModel);
+        personListModel = new DefaultListModel<>();
+        personJList = new JList<>(personListModel);
 
         this.add(new JLabel("Enter ticket name:"), c);
         c.gridy++;
@@ -64,7 +67,7 @@ public class AddTicketWindow extends AddWindow {
         this.add(add, c);
         c.gridy++;
 
-        this.add(dbJList, c);
+        this.add(personJList, c);
         c.gridy++;
 
         this.add(createButton,c);
@@ -74,23 +77,48 @@ public class AddTicketWindow extends AddWindow {
 
         equallyButtonListener();
         addButtonListener();
-    }
-
-    public void equallyButtonListener(){
-        this.isUnequallySplit.addActionListener(l ->
-        {
-            boolean selected = isUnequallySplit.getModel().isSelected();
-            System.out.println(selected);
-            SwingUtilities.updateComponentTreeUI(this);
-
-        });
+        individualPriceListener();
     }
 
     public void addButtonListener(){
         this.add.addActionListener(l ->
         {
             String p = (String) lendingCB.getSelectedItem();
-            dbListModel.addElement(p);
+            personListModel.addElement(p);
+
+        });
+    }
+
+    public void equallyButtonListener(){
+        this.isUnequallySplit.addActionListener(l ->
+        {
+            if ( isUnequallySplit.getModel().isSelected()){
+
+                this.remove(createButton);
+
+                this.add(individualPriceHere, c);
+                c.gridy++;
+                this.add(individualPrice, c);
+                c.gridy++;
+                this.add(createButton, c);
+                c.gridy++;
+            } else {
+                this.remove(individualPrice);
+                this.remove(individualPriceHere);
+            }
+
+            SwingUtilities.updateComponentTreeUI(this);
+
+        });
+    }
+
+    public void individualPriceListener(){
+        this.individualPrice.addActionListener(l ->
+        {
+            int index = personJList.getSelectedIndex();
+            String name = personListModel.getElementAt(index).split(": ")[0];
+            double price = Double.parseDouble(individualPrice.getText());
+            personListModel.setElementAt(name + ": " + price, index);
 
         });
     }
@@ -99,11 +127,25 @@ public class AddTicketWindow extends AddWindow {
         this.createButton.addActionListener(l ->
         {
             String lender = (String) lenderCB.getSelectedItem();
-            controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, true );
 
-            for (Object p : dbListModel.toArray()){
-                controller.addPersonToTicket(ticketName.getText(), p.toString(), 0 );
+            if ( isUnequallySplit.getModel().isSelected()){
+
+                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false );
+                for (Object p : personListModel.toArray()){
+                    String name = p.toString().split(": ")[0];
+                    double amountPayed = Double.parseDouble(p.toString().split(": ")[1]);
+                    controller.addPersonToTicket(ticketName.getText(), name, amountPayed);
+                }
+
+            } else {
+
+                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, true );
+
+                for (Object p : personListModel.toArray()){
+                    controller.addPersonToTicket(ticketName.getText(), p.toString(), 0 );
+                }
             }
+
             this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
         });
     }

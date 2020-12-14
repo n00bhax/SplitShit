@@ -36,6 +36,7 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
         this.add(ticketsPanel);
         this.add(personsPanel);
 
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 

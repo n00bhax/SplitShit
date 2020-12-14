@@ -25,6 +25,8 @@ public abstract class AddWindow extends JFrame {
         c.gridx = 0;
 
         createButtonListener();
+
+        this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
 
