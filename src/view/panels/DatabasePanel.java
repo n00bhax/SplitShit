@@ -11,16 +11,16 @@ import javax.swing.*;
 
 public class DatabasePanel<E> extends JPanel{
 
-    private JList<E> dbJList;
-    private DefaultListModel<E> dbListModel;
+    private final JList<E> dbJList;
+    private final DefaultListModel<E> dbListModel;
 
-    private JButton addButton;
-    private JButton removeButton;
+    private final JButton addButton;
+    private final JButton removeButton;
 
     private final Database<E> db;
-    private DatabaseType dbType;
+    private final DatabaseType dbType;
 
-    private Controller controller;
+    private final Controller controller;
 
     public DatabasePanel(Database<E> db, String title, DatabaseType dbType, Controller controller)
     {

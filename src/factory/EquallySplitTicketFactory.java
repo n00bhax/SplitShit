@@ -6,7 +6,6 @@ import objects.tickets.equallySplit.*;
 import objects.tickets.Ticket;
 
 
-
 public class EquallySplitTicketFactory extends TicketFactory{
 
     @Override

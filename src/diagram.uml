@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="296.0" y="378.5">objects.tickets.unEquallySplit.PartyTicketUS</node>
+    <node x="177.0" y="832.0">factory.TicketFactory</node>
+    <node x="399.0" y="489.0">view.panels.DatabasePanel</node>
+    <node x="1664.0" y="378.5">objects.tickets.equallySplit.RestaurantTicketES</node>
+    <node x="1428.0" y="832.0">factory.FactoryProducer</node>
+    <node x="0.0" y="936.0">factory.EquallySplitTicketFactory</node>
+    <node x="828.0" y="489.0">controller.Controller</node>
+    <node x="1958.0" y="378.5">objects.tickets.equallySplit.OtherTicketES</node>
+    <node x="354.0" y="936.0">factory.UnequallySplitTicketFactory</node>
+    <node x="406.25" y="195.0">objects.tickets.unEquallySplit.UnEquallySplitTicket</node>
+    <node x="733.0" y="832.0">view.DatabaseType</node>
+    <node x="563.0" y="378.5">objects.tickets.unEquallySplit.OtherTicketUS</node>
+    <node x="1399.0" y="378.5">objects.tickets.equallySplit.PartyTicketES</node>
+    <node x="984.0" y="832.0">objects.Person</node>
+    <node x="1002.5625" y="0.0">objects.tickets.Ticket</node>
+    <node x="1117.0" y="367.0">objects.tickets.equallySplit.AirplaneTicketES</node>
+    <node x="1235.0" y="489.0">view.windows.MainWindow</node>
+    <node x="833.0" y="378.5">objects.tickets.unEquallySplit.AirplaneTicketUS</node>
+    <node x="1528.25" y="195.0">objects.tickets.equallySplit.EquallySplitTicket</node>
+    <node x="0.0" y="378.5">objects.tickets.unEquallySplit.RestaurantTicketUS</node>
+    <node x="1563.0" y="489.0">objects.tickets.TicketTypes</node>
+    <node x="0.0" y="489.0">database.Database</node>
+    <node x="1163.0" y="832.0">Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="objects.tickets.equallySplit.RestaurantTicketES" target="objects.tickets.equallySplit.EquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="1801.0" y="347.0" />
+      <point x="1694.5" y="347.0" />
+      <point x="33.25" y="61.0" />
+    </edge>
+    <edge source="objects.tickets.equallySplit.PartyTicketES" target="objects.tickets.equallySplit.EquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="1521.5" y="347.0" />
+      <point x="1628.0" y="347.0" />
+      <point x="-33.25" y="61.0" />
+    </edge>
+    <edge source="factory.UnequallySplitTicketFactory" target="factory.TicketFactory">
+      <point x="0.0" y="-27.0" />
+      <point x="521.0" y="911.0" />
+      <point x="427.5" y="911.0" />
+      <point x="83.5" y="27.0" />
+    </edge>
+    <edge source="objects.tickets.equallySplit.OtherTicketES" target="objects.tickets.equallySplit.EquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="2082.0" y="337.0" />
+      <point x="1761.0" y="337.0" />
+      <point x="99.75" y="61.0" />
+    </edge>
+    <edge source="objects.tickets.equallySplit.EquallySplitTicket" target="objects.tickets.Ticket">
+      <point x="0.0" y="-61.0" />
+      <point x="1661.25" y="170.0" />
+      <point x="1166.8125" y="170.0" />
+      <point x="54.75" y="72.5" />
+    </edge>
+    <edge source="objects.tickets.unEquallySplit.UnEquallySplitTicket" target="objects.tickets.Ticket">
+      <point x="0.0" y="-61.0" />
+      <point x="553.75" y="170.0" />
+      <point x="1057.3125" y="170.0" />
+      <point x="-54.75" y="72.5" />
+    </edge>
+    <edge source="objects.tickets.equallySplit.AirplaneTicketES" target="objects.tickets.equallySplit.EquallySplitTicket">
+      <point x="0.0" y="-38.5" />
+      <point x="1248.0" y="337.0" />
+      <point x="1561.5" y="337.0" />
+      <point x="-99.75" y="61.0" />
+    </edge>
+    <edge source="objects.tickets.unEquallySplit.PartyTicketUS" target="objects.tickets.unEquallySplit.UnEquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="419.5" y="347.0" />
+      <point x="516.875" y="347.0" />
+      <point x="-36.875" y="61.0" />
+    </edge>
+    <edge source="factory.EquallySplitTicketFactory" target="factory.TicketFactory">
+      <point x="0.0" y="-27.0" />
+      <point x="167.0" y="911.0" />
+      <point x="260.5" y="911.0" />
+      <point x="-83.5" y="27.0" />
+    </edge>
+    <edge source="objects.tickets.unEquallySplit.OtherTicketUS" target="objects.tickets.unEquallySplit.UnEquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="688.0" y="347.0" />
+      <point x="590.625" y="347.0" />
+      <point x="36.875" y="61.0" />
+    </edge>
+    <edge source="objects.tickets.unEquallySplit.AirplaneTicketUS" target="objects.tickets.unEquallySplit.UnEquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="965.0" y="337.0" />
+      <point x="664.375" y="337.0" />
+      <point x="110.625" y="61.0" />
+    </edge>
+    <edge source="objects.tickets.unEquallySplit.RestaurantTicketUS" target="objects.tickets.unEquallySplit.UnEquallySplitTicket">
+      <point x="0.0" y="-27.0" />
+      <point x="138.0" y="337.0" />
+      <point x="443.125" y="337.0" />
+      <point x="-110.625" y="61.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.9663366336633662" x="1103.0" y="495.00000000000006" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Properties</Category>
+    <Category>Methods</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

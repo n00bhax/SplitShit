@@ -1,7 +1,6 @@
 package objects.tickets.equallySplit;
 
 import objects.Person;
-import objects.tickets.equallySplit.EquallySplitTicket;
 
 public class AirplaneTicketES extends EquallySplitTicket {
 

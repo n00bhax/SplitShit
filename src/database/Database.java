@@ -7,14 +7,13 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Set;
 
 public class Database<E> implements Iterable<E>{
 
     // Ik gebruik geen Observers wegens depcricated in java 15. Jens zei dat het goed was.
     public PropertyChangeSupport support = new PropertyChangeSupport(this);
 
-    //Naam is key, Object is value
+    //Naam is key, Ticket/Person is value
     protected LinkedHashMap<String, E> data = new LinkedHashMap<>();
 
     private static Database<Ticket> ticketDatabase = null;
@@ -32,29 +31,25 @@ public class Database<E> implements Iterable<E>{
         return personDatabase;
     }
 
-    public Database() {
-
-    }
-
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
 
     public void add(String name, E e) {
+
         if (data.put(name, e) == null)
             support.firePropertyChange("add", null, null);
         else
             System.out.println(name + " bestaat al");
-
-    }
-
-    public String[] getKeys(){
-        return data.keySet().toArray(new String[0]);
     }
 
     public void remove(String key){
         data.remove(key);
         support.firePropertyChange("remove", null, null);
+    }
+
+    public String[] getKeys(){
+        return data.keySet().toArray(new String[0]);
     }
 
     public E get(String name){

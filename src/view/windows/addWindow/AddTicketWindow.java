@@ -2,6 +2,7 @@ package view.windows.addWindow;
 
 import controller.Controller;
 import database.Database;
+import objects.tickets.TicketTypes;
 
 import javax.swing.*;
 import java.awt.event.WindowEvent;
@@ -130,7 +131,7 @@ public class AddTicketWindow extends AddWindow {
 
             if ( isUnequallySplit.getModel().isSelected()){
 
-                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false );
+                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false, TicketTypes.OTHER );
                 for (Object p : personListModel.toArray()){
                     String name = p.toString().split(": ")[0];
                     double amountPayed = Double.parseDouble(p.toString().split(": ")[1]);
@@ -139,7 +140,7 @@ public class AddTicketWindow extends AddWindow {
 
             } else {
 
-                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, true );
+                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, true, TicketTypes.OTHER );
 
                 for (Object p : personListModel.toArray()){
                     controller.addPersonToTicket(ticketName.getText(), p.toString(), 0 );
