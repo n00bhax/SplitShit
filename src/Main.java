@@ -51,8 +51,6 @@ public class Main {
         c.addPersonToTicket("nog2", "herman", 0.0);
         c.addPersonToTicket("nog2", "willem", 0.0);
 
-        LinkedHashMap<Person, LinkedHashMap<Person, Double>> test = c.calculateBill();
-
     }
 
 }

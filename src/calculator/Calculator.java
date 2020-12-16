@@ -4,12 +4,9 @@ import database.Database;
 import objects.Person;
 import objects.tickets.Ticket;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.stream.Collectors;
 
-//Kijk naar mathias code
-//https://gitlab.com/WatcherWhale/softwaredesign/-/blob/master/MoneyTracker/src/main/java/be/montra/bills/Bill.java#L21
 
 public class Calculator {
 
@@ -69,6 +66,18 @@ public class Calculator {
         }
 
         return bill;
+    }
+
+    public ArrayList<String> getBill(){
+
+        LinkedHashMap<Person, LinkedHashMap<Person, Double>> bill = createBill();
+
+        ArrayList<String> array = new ArrayList<>();
+        for (Person p: persons){
+            array.add(p.toString() + " is owed by: " + bill.get(p));
+        }
+
+        return array;
     }
 
 }

@@ -6,6 +6,7 @@ import objects.Person;
 import objects.tickets.Ticket;
 import view.DatabaseType;
 import view.panels.DatabasePanel;
+import view.windows.addWindow.BillWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +16,10 @@ import java.beans.PropertyChangeListener;
 public class MainWindow extends JFrame implements PropertyChangeListener {
 
     private final Controller controller = new Controller();
-    DatabasePanel<Ticket> ticketsPanel;
-    DatabasePanel<Person> personsPanel;
+
+    private DatabasePanel<Ticket> ticketsPanel;
+    private DatabasePanel<Person> personsPanel;
+    private JButton calculateBill;
 
     public MainWindow() {
         super("SplitShit");
@@ -31,13 +34,21 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
 
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../image.png")));
+
         ticketsPanel = new DatabasePanel(Database.getTicketDatabase(), "Tickets", DatabaseType.TICKET, controller);
         personsPanel = new DatabasePanel(Database.getPersonDatabase(), "Persons", DatabaseType.PERSON, controller);
+
+        calculateBill = new JButton("Calculate Bill");
+
         this.add(ticketsPanel);
         this.add(personsPanel);
+        this.add(calculateBill);
 
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+        buttonListener();
     }
 
     @Override
@@ -47,4 +58,12 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
         personsPanel.refresh();
 
     }
+
+    private void buttonListener(){
+        this.calculateBill.addActionListener(l ->
+        {
+            BillWindow w = new BillWindow();
+        });
+    }
+
 }
