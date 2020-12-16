@@ -3,7 +3,9 @@ package objects.tickets.unEquallySplit;
 import objects.Person;
 import objects.tickets.Ticket;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class UnEquallySplitTicket extends Ticket {
@@ -19,6 +21,10 @@ public abstract class UnEquallySplitTicket extends Ticket {
     @Override
     public void addPerson(Person p, double debtAmount) {
         distribution.put(p, debtAmount);
+    }
+
+    public ArrayList<Person> getDebtors(){
+        return new ArrayList<>(distribution.keySet());
     }
 
     public Double getDebt(Person p){

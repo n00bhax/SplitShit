@@ -2,6 +2,9 @@ package objects.tickets;
 
 import objects.Person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Ticket {
 
     protected String name;
@@ -23,6 +26,8 @@ public abstract class Ticket {
     }
 
     public abstract void addPerson(Person p, double debtAmount);
+
+    public abstract ArrayList<Person> getDebtors();
 
     public abstract Double getDebt(Person p);
 

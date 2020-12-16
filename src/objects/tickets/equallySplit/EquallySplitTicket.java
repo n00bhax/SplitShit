@@ -4,6 +4,7 @@ import objects.Person;
 import objects.tickets.Ticket;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class EquallySplitTicket extends Ticket {
 
@@ -16,6 +17,10 @@ public abstract class EquallySplitTicket extends Ticket {
     @Override
     public void addPerson(Person p, double debtAmount) {
         people.add(p);
+    }
+
+    public ArrayList<Person> getDebtors(){
+        return people;
     }
 
     public Double getDebt(Person p){
