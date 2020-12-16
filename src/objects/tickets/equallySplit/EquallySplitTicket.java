@@ -18,6 +18,12 @@ public abstract class EquallySplitTicket extends Ticket {
         people.add(p);
     }
 
+    public Double getDebt(Person p){
+        if (people.contains(p))
+            return totalPrice/people.size();
+        return 0.0;
+    }
+
     @Override
     public String toString() {
         return name + ": " + lender.getName() + " payed " + totalPrice + people.toString();

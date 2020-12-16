@@ -1,5 +1,6 @@
 package controller;
 
+import calculator.Calculator;
 import database.Database;
 import factory.FactoryProducer;
 import factory.TicketFactory;
@@ -8,6 +9,7 @@ import objects.tickets.Ticket;
 import objects.tickets.TicketTypes;
 
 import java.beans.PropertyChangeListener;
+import java.util.LinkedHashMap;
 
 public class Controller {
 
@@ -55,5 +57,9 @@ public class Controller {
         t.addPerson(p, debtAmount);
     }
 
+    public LinkedHashMap<Person, LinkedHashMap<Person, Double>> calculateBill(){
+        Calculator calc = new Calculator();
+        return calc.createBill();
+    }
 
 }

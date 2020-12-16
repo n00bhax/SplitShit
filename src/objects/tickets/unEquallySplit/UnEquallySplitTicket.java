@@ -21,6 +21,10 @@ public abstract class UnEquallySplitTicket extends Ticket {
         distribution.put(p, debtAmount);
     }
 
+    public Double getDebt(Person p){
+        return distribution.get(p);
+    }
+
     @Override
     public String toString() {
         String lendingPeople = distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key)).collect(Collectors.joining(", "));

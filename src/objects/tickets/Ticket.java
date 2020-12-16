@@ -18,14 +18,16 @@ public abstract class Ticket {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getTotalPrice() {
         return totalPrice;
     }
 
     public abstract void addPerson(Person p, double debtAmount);
+
+    public abstract Double getDebt(Person p);
+
+    public boolean isLender(Person p){
+        return p == lender;
+    }
 
 }
