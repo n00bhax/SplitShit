@@ -21,10 +21,6 @@ public abstract class Ticket {
         return name;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
-    }
-
     public abstract void addPerson(Person p, double debtAmount);
 
     public abstract ArrayList<Person> getDebtors();

@@ -10,8 +10,6 @@ import java.util.LinkedHashMap;
 bij aanmaak ticket ook soort ticket aanduiden (cinema en zo)
 toString van deze types aanpassen zodat het mee in de ui staat
 
-iets van eind rekening calculeren.
-
 tests maken
 
 schema maken
