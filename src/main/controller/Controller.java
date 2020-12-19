@@ -9,6 +9,7 @@ import objects.tickets.Ticket;
 import objects.tickets.TicketTypes;
 
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class Controller {
@@ -57,9 +58,9 @@ public class Controller {
         t.addPerson(p, debtAmount);
     }
 
-    public LinkedHashMap<Person, LinkedHashMap<Person, Double>> calculateBill(){
+    public ArrayList<String> calculateBill(){
         Calculator calc = new Calculator();
-        return calc.createBill();
+        return calc.getBill();
     }
 
 }

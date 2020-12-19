@@ -1,11 +1,14 @@
 package view.windows.addWindow;
 
 import calculator.Calculator;
+import controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class BillWindow extends JFrame {
+
+    private final Controller controller = new Controller();
 
     private final JList<String> dbJList;
     private final DefaultListModel<String> dbListModel;
@@ -21,8 +24,8 @@ public class BillWindow extends JFrame {
 
         this.setSize(400,200);
 
-        Calculator c = new Calculator();
-        for (String s :c.getBill()){
+        //Calculator c = new Calculator();
+        for (String s :controller.calculateBill()){
             dbListModel.addElement(s);
         }
 

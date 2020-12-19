@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 
 public class Database<E> implements Iterable<E>{
 
-    // I don't use Observers since they are depcricated in java 15. Jens said it was okay.
+    // I don't use Observers since they are deprecated in java 15. Jens said it was okay.
     public PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //Name is key, Ticket/Person is value

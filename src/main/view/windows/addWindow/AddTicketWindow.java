@@ -6,6 +6,7 @@ import objects.tickets.TicketTypes;
 
 import javax.swing.*;
 import java.awt.event.WindowEvent;
+import java.util.Arrays;
 
 public class AddTicketWindow extends AddWindow {
 
@@ -14,6 +15,7 @@ public class AddTicketWindow extends AddWindow {
     private JTextField individualPrice;
     private JLabel individualPriceHere;
     private JComboBox<String> lenderCB;
+    private JComboBox<TicketTypes> ticketTypeCB;
 
     private JToggleButton isUnequallySplit;
 
@@ -35,6 +37,7 @@ public class AddTicketWindow extends AddWindow {
         individualPriceHere = new JLabel("Individual price for selected person:");
         lenderCB = new JComboBox<>(Database.getPersonDatabase().getKeys());
         lendingCB = new JComboBox<>(Database.getPersonDatabase().getKeys());
+        ticketTypeCB = new JComboBox<>(TicketTypes.values());
         isUnequallySplit = new JToggleButton("Split unequally", false);
         add = new JButton("+");
 
@@ -54,6 +57,9 @@ public class AddTicketWindow extends AddWindow {
         this.add(new JLabel("Choose lender:"), c);
         c.gridy++;
         this.add(lenderCB, c);
+        c.gridy++;
+
+        this.add(ticketTypeCB, c);
         c.gridy++;
 
         this.add(isUnequallySplit, c);
@@ -131,7 +137,7 @@ public class AddTicketWindow extends AddWindow {
 
             if ( isUnequallySplit.getModel().isSelected()){
 
-                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false, TicketTypes.OTHER );
+                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false, (TicketTypes) ticketTypeCB.getSelectedItem());
                 for (Object p : personListModel.toArray()){
                     String name = p.toString().split(": ")[0];
                     double amountPayed = Double.parseDouble(p.toString().split(": ")[1]);
@@ -140,7 +146,7 @@ public class AddTicketWindow extends AddWindow {
 
             } else {
 
-                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, true, TicketTypes.OTHER );
+                controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, true, (TicketTypes) ticketTypeCB.getSelectedItem());
 
                 for (Object p : personListModel.toArray()){
                     controller.addPersonToTicket(ticketName.getText(), p.toString(), 0 );

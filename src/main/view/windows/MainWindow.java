@@ -28,7 +28,7 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
     public void initialize()
     {
 
-        this.setSize(500, 300);
+        this.setSize(600, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         GridBagLayout layout = new GridBagLayout();

@@ -37,11 +37,11 @@ public class Main {
         c.addPerson("Manfred");
 
 
-        c.addTicket("tikkie", 5, "willem", false, TicketTypes.OTHER);
+        c.addTicket("tikkie", 5, "willem", false, TicketTypes.AIRPLANE);
         c.addPersonToTicket("tikkie", "herman", 3);
         c.addPersonToTicket("tikkie", "bart", 1);
 
-        c.addTicket("nog1", 10, "willem", true , TicketTypes.OTHER);
+        c.addTicket("nog1", 10, "willem", true , TicketTypes.PARTY);
         c.addPersonToTicket("nog1", "herman", 0.0);
         c.addPersonToTicket("nog1", "Manfred", 0.0);
 

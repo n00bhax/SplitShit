@@ -10,6 +10,6 @@ public class AirplaneTicketES extends EquallySplitTicket {
 
     @Override
     public String toString() {
-        return super.toString() + "Airplane Ticket Equally Split";
+        return super.toString() + "(Airplane)";
     }
 }

@@ -20,7 +20,6 @@ public class Person_UTest {
 /*
         Person mock_p = Mockito.mock(Person.class);
         Mockito.when(mock_p.getName()).thenReturn(Person.class.getDeclaredField("name"));
-        field.setAccessible(true);
         */
 
     }
