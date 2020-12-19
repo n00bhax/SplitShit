@@ -5,7 +5,6 @@ import objects.tickets.Ticket;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class UnEquallySplitTicket extends Ticket {
@@ -13,14 +12,16 @@ public abstract class UnEquallySplitTicket extends Ticket {
     private final LinkedHashMap<Person, Double> distribution = new LinkedHashMap<>();
     //Persons Doubles contain how much they are in debt (need to pay back). (shouldn't be 0)
 
-
     public UnEquallySplitTicket(String ticketName, double debtAmount, Person lender) {
         super(ticketName, debtAmount, lender);
     }
 
     @Override
     public void addPerson(Person p, double debtAmount) {
-        distribution.put(p, debtAmount);
+        if (debtAmount > 0)
+            distribution.put(p, debtAmount);
+        else
+            System.out.println("Debt should be higher than 0.0");
     }
 
     public ArrayList<Person> getDebtors(){

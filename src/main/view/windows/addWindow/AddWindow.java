@@ -4,7 +4,6 @@ import controller.Controller;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 
 public abstract class AddWindow extends JFrame {
 

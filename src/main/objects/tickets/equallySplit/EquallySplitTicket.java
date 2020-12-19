@@ -4,7 +4,6 @@ import objects.Person;
 import objects.tickets.Ticket;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class EquallySplitTicket extends Ticket {
 

@@ -1,14 +1,9 @@
 import controller.Controller;
-import objects.Person;
 import objects.tickets.TicketTypes;
 import view.windows.MainWindow;
 
-import java.util.LinkedHashMap;
-
 //to do
 /*
-bij aanmaak ticket ook soort ticket aanduiden (cinema en zo)
-toString van deze types aanpassen zodat het mee in de ui staat
 
 tests maken
 

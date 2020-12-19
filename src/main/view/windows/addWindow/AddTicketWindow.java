@@ -6,7 +6,6 @@ import objects.tickets.TicketTypes;
 
 import javax.swing.*;
 import java.awt.event.WindowEvent;
-import java.util.Arrays;
 
 public class AddTicketWindow extends AddWindow {
 
