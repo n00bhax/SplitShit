@@ -14,7 +14,7 @@ public class Database<E> implements Iterable<E>{
     private PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     //Name is key, Ticket/Person is value
-    protected LinkedHashMap<String, E> data = new LinkedHashMap<>();
+    private LinkedHashMap<String, E> data = new LinkedHashMap<>();
 
     private static Database<Ticket> ticketDatabase = null;
     private static Database<Person> personDatabase = null;
