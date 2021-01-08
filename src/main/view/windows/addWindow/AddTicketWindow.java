@@ -136,6 +136,15 @@ public class AddTicketWindow extends AddWindow {
 
             if ( isUnequallySplit.getModel().isSelected()){
 
+                double sum = 0;
+                for (Object p : personListModel.toArray()){
+                    double amountPayed = Double.parseDouble(p.toString().split(": ")[1]);
+                    sum += amountPayed;
+                }
+
+                if (sum > Double.parseDouble(totalPrice.getText())) //Don't accept tickets with invalid debts
+                    return;
+
                 controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false, (TicketTypes) ticketTypeCB.getSelectedItem());
                 for (Object p : personListModel.toArray()){
                     String name = p.toString().split(": ")[0];

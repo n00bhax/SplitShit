@@ -18,8 +18,17 @@ public abstract class UnEquallySplitTicket extends Ticket {
 
     @Override
     public void addPerson(Person p, double debtAmount) {
-        if (debtAmount > 0)
-            distribution.put(p, debtAmount);
+        if (debtAmount > 0){
+
+            double sum = 0;
+            for (double v :distribution.values())
+                sum += v;
+
+            if (sum + debtAmount <= totalPrice)
+                distribution.put(p, debtAmount);
+            else
+                System.out.println("The total price of the ticket and the debt of this person don't add up");
+        }
         else
             System.out.println("Debt should be higher than 0.0");
     }
