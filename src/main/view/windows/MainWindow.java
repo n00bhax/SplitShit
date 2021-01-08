@@ -62,7 +62,7 @@ public class MainWindow extends JFrame implements PropertyChangeListener {
     private void buttonListener(){
         this.calculateBill.addActionListener(l ->
         {
-            BillWindow w = new BillWindow();
+            new BillWindow();
         });
     }
 
