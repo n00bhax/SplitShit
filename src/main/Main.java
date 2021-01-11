@@ -2,15 +2,6 @@ import controller.Controller;
 import objects.tickets.TicketTypes;
 import view.windows.MainWindow;
 
-//to do
-/*
-
-tests maken
-
-schema maken
-
- */
-
 public class Main {
     public static void main(String[] args) {
 
