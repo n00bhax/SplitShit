@@ -34,7 +34,7 @@ public class Main {
 
         c.addTicket("tikkie", 5, "willem", false, TicketTypes.AIRPLANE);
         c.addPersonToTicket("tikkie", "herman", 3);
-        c.addPersonToTicket("tikkie", "bart", 1);
+        c.addPersonToTicket("tikkie", "bart", 2);
 
         c.addTicket("nog1", 10, "willem", true , TicketTypes.PARTY);
         c.addPersonToTicket("nog1", "herman", 0.0);

@@ -20,6 +20,18 @@ public abstract class Ticket {
         return name;
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public Person getLender() {
+        return lender;
+    }
+
+    public abstract TicketTypes getType();
+
+    public abstract boolean isEquallySplit();
+
     public abstract void addPerson(Person p, double debtAmount);
 
     public abstract ArrayList<Person> getDebtors();

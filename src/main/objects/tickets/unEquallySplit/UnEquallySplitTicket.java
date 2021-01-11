@@ -41,6 +41,10 @@ public abstract class UnEquallySplitTicket extends Ticket {
         return distribution.get(p);
     }
 
+    public boolean isEquallySplit(){
+        return false;
+    }
+
     @Override
     public String toString() {
         String lendingPeople = distribution.keySet().stream().map(key -> key.getName() + " " + distribution.get(key)).collect(Collectors.joining(", "));

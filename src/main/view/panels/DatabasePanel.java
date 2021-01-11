@@ -2,11 +2,14 @@ package view.panels;
 
 import controller.Controller;
 import database.Database;
+import objects.tickets.Ticket;
 import view.DatabaseType;
 import view.windows.addWindow.AddPersonWindow;
 import view.windows.addWindow.AddTicketWindow;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class DatabasePanel<E> extends JPanel{
@@ -36,6 +39,7 @@ public class DatabasePanel<E> extends JPanel{
 
         addButtonListener();
         removeButtonListener();
+        addMouseListener();
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -68,6 +72,28 @@ public class DatabasePanel<E> extends JPanel{
             db.remove(key);
 
         });
+    }
+
+    public void addMouseListener(){
+        if (dbType == DatabaseType.TICKET)
+            dbJList.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (e.getClickCount() == 2) { // Double-click detected
+
+                        E value = dbJList.getSelectedValue();
+                        String key = value.toString().split(":")[0];
+
+                        //make new ticket with info from previous
+                        AddTicketWindow w = new AddTicketWindow(controller);
+                        w.copyTicket((Ticket) db.get(key));
+
+                        //delete old ticket
+                        db.remove(key);
+                    }
+                }
+
+            });
     }
 
     public void refresh(){

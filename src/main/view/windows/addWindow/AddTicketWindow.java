@@ -2,6 +2,8 @@ package view.windows.addWindow;
 
 import controller.Controller;
 import database.Database;
+import objects.Person;
+import objects.tickets.Ticket;
 import objects.tickets.TicketTypes;
 
 import javax.swing.*;
@@ -86,6 +88,35 @@ public class AddTicketWindow extends AddWindow {
         individualPriceListener();
     }
 
+    public void copyTicket(Ticket t){
+        initialize();
+        ticketName.setText(t.getName());
+        totalPrice.setText((Double.toString(t.getTotalPrice())));
+        ticketTypeCB.setSelectedItem(t.getType());
+        lenderCB.setSelectedItem(t.getLender());
+        isUnequallySplit.setSelected(!t.isEquallySplit());
+
+        if (t.isEquallySplit())
+            for (Person d: t.getDebtors()){
+                personListModel.addElement(d.getName());
+            }
+        else{
+            this.remove(createButton);
+
+            this.add(individualPriceHere, c);
+            c.gridy++;
+            this.add(individualPrice, c);
+            c.gridy++;
+            this.add(createButton, c);
+            c.gridy++;
+
+            for (Person d: t.getDebtors()){
+                personListModel.addElement(d.getName() + ": " + t.getDebt(d));
+            }
+        }
+
+    }
+
     public void addButtonListener(){
         this.add.addActionListener(l ->
         {
@@ -142,7 +173,7 @@ public class AddTicketWindow extends AddWindow {
                     sum += amountPayed;
                 }
 
-                if (sum > Double.parseDouble(totalPrice.getText())) //Don't accept tickets with invalid debts
+                if (sum != Double.parseDouble(totalPrice.getText())) //Don't accept tickets with invalid debts
                     return;
 
                 controller.addTicket(ticketName.getText(), Double.parseDouble(totalPrice.getText()), lender, false, (TicketTypes) ticketTypeCB.getSelectedItem());

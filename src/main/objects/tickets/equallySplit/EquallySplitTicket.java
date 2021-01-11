@@ -28,6 +28,10 @@ public abstract class EquallySplitTicket extends Ticket {
         return 0.0;
     }
 
+    public boolean isEquallySplit(){
+        return true;
+    }
+
     @Override
     public String toString() {
         return name + ": " + lender.getName() + " payed " + totalPrice + people.toString();
