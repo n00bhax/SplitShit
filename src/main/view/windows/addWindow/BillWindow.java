@@ -3,6 +3,7 @@ package view.windows.addWindow;
 import controller.Controller;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class BillWindow extends JFrame {
 
@@ -16,6 +17,7 @@ public class BillWindow extends JFrame {
         this.add(dbJList);
 
         this.setSize(400,200);
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../image.png")));
 
         Controller controller = new Controller();
         for (String s : controller.calculateBill()){

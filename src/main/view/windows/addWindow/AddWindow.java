@@ -17,6 +17,8 @@ public abstract class AddWindow extends JFrame {
         super(title);
         this.controller = controller;
 
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("../../image.png")));
+
         this.createButton = new JButton("Create");
 
         this.setLayout(new GridBagLayout());
