@@ -2,6 +2,8 @@ import controller.Controller;
 import objects.tickets.TicketTypes;
 import view.windows.MainWindow;
 
+// https://github.com/n00bhax/SplitShit
+
 public class Main {
     public static void main(String[] args) {
 
